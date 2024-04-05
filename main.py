@@ -1,3 +1,10 @@
+
+import sys
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+
 def read_population_data(file_name):
     """
     Приймає рядок file_name, який представляє ім'я файлу із даними про популяцію.
@@ -28,3 +35,28 @@ def sort_by_population(population_data):
     return sorted(population_data, key=lambda x: x[2])
 
 
+def main():
+    """
+    Головна функція програми. Виконує зчитування даних, сортування та вивід результатів.
+    """
+    file_name = "information.txt" 
+    try:
+        population_data = read_population_data(file_name)
+        sorted_by_area = sort_by_area(population_data)
+        sorted_by_population = sort_by_population(population_data)
+
+        print("Data sorted by area:")
+        for country, area, population in sorted_by_area:
+            print(f"{country}: area - {area}, population - {population}")
+
+        print("\nData sorted by population:")
+        for country, area, population in sorted_by_population:
+            print(f"{country}: area - {area}, population - {population}")
+
+    except FileNotFoundError:
+        print("File doesn't find.")
+    except ValueError:
+        print("The data format in the file is incorrect.")
+
+if __name__ == "__main__":
+    main()
