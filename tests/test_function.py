@@ -20,3 +20,14 @@ def test_read_population_data(tmp_path, population_data):
 
     
     assert read_population_data(file_path) == population_data
+    
+    
+def test_sort_by_area(population_data):
+    
+    expected_result = [("Italy", 301340.0, 60461826),
+                       ("Germany", 357022.0, 83783942),
+                       ("Spain", 505990.0, 47329981)]
+
+   
+    assert sort_by_area(population_data) == expected_result
+    
