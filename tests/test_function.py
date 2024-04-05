@@ -10,3 +10,13 @@ def population_data():
         ("Spain", 505990.0, 47329981),
     ]
 
+
+def test_read_population_data(tmp_path, population_data):
+   
+    file_path = tmp_path / "test_population_data.txt"
+    with open(file_path, "w") as f:
+        for country, area, population in population_data:
+            f.write(f"{country}, {area}, {population}\n")
+
+    
+    assert read_population_data(file_path) == population_data
