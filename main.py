@@ -18,3 +18,13 @@ def sort_by_area(population_data):
     """
     return sorted(population_data, key=lambda x: x[1])
 
+
+
+def sort_by_population(population_data):
+    """
+    Приймає список кортежів population_data, де кожен кортеж містить інформацію про країну у форматі (назва, площа, населення).
+    Повертає список кортежів, відсортований за зростанням населення країн.
+    """
+    return sorted(population_data, key=lambda x: x[2])
+
+
